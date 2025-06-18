@@ -25,7 +25,12 @@ pipeline {
                 sh 'docker build -t $IMAGE_NAME:$TAG .'
             }
         }
-
+        stage('Run App Container') {
+              steps {
+                sh 'docker run -d -p 3000:3000 --name mi-app gallegojl1/mi-app'
+              }
+        }
+        
         stage('login to dockerhub') {
             steps {
                 sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
