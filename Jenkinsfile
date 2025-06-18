@@ -4,6 +4,7 @@ pipeline {
     environment {
         IMAGE_NAME = 'gallegojl1/mi-app'
         TAG = 'latest'
+        DOCKERHUB_CREDENTIALS = credentials('joseluis-dockerhub')
     }
 
     stages {
@@ -19,14 +20,15 @@ pipeline {
             }
         }
 
-        stage('Push Docker Image') {
+        stage('login to dockerhub') {
             steps {
-                withCredentials([usernamePassword(credentialsId: 'dockerhub-creds', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {
-                    sh '''
-                      echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin
-                      docker push $IMAGE_NAME:$TAG
-                    '''
-                }
+                sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+            }
+        }
+        
+         stage('push image') {
+            steps {
+                sh 'docker push $IMAGE_NAME:$TAG'
             }
         }
     }
