@@ -6,8 +6,14 @@ pipeline {
         TAG = 'latest'
         DOCKERHUB_CREDENTIALS = credentials('joseluis-dockerhub')
     }
-
+    
     stages {
+        stage('Check Docker') {
+            steps {
+                sh 'which docker || echo "Docker no está disponible"'
+            }
+        }
+        
         stage('Checkout') {
             steps {
                 git url: 'https://github.com/gallegojl1/nuevo-jenkins-pipeline.git' , branch: 'main'
