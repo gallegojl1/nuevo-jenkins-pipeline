@@ -10,7 +10,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git 'https://github.com/gallegojl1/nuevo-jenkins-pipeline.git' , branch: 'main'
+                git url: 'https://github.com/gallegojl1/nuevo-jenkins-pipeline.git' , branch: 'main'
             }
         }
 
