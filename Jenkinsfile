@@ -9,7 +9,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git 'https://github.com/gallegojl1/docker-node-ejemplo.git'
+                git 'https://github.com/gallegojl1/nuevo-jenkins-pipeline.git'
             }
         }
 
