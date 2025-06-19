@@ -27,7 +27,7 @@ pipeline {
         }
         stage('Run App Container') {
               steps {
-                sh 'docker run -d -p 3000:3000 --name mi-app gallegojl1/mi-app'
+                sh 'docker run -d -p 3001:3001 --name mi-app gallegojl1/mi-app'
               }
         }
         
