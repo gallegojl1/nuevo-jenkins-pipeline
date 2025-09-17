@@ -6,7 +6,7 @@ pipeline {
         TAG = 'latest'
         DOCKERHUB_CREDENTIALS = credentials('joseluis-dockerhub')
         REMOTE_HOST = '217.160.88.215'
-        REMOTE_USER = 'tu_usuario'
+        REMOTE_USER = 'root'
     }
 
     stages {
