@@ -42,7 +42,7 @@ pipeline {
                             docker pull $IMAGE_NAME:$TAG &&
                             docker stop mi-app || true &&
                             docker rm mi-app || true &&
-                            docker run -d -p 3001:3001 --name mi-app $IMAGE_NAME:$TAG
+                            docker run -d -p 3000:3000 --name mi-app $IMAGE_NAME:$TAG
                         "
                     '''
                 }
