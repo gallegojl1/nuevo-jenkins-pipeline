@@ -44,7 +44,7 @@ pipeline {
                             docker rm mi-app || true &&
                             docker run -d -p 8080:80 --name mi-app $IMAGE_NAME:$TAG
                             # ⚠️ Cambiar permisos del docker.sock dentro del contenedor
-                            docker exec mi-app chmod 777 /var/run/docker.sock
+                            docker exec mi-app chmod 770 /var/run/docker.sock
                         "
                     '''
                 }
